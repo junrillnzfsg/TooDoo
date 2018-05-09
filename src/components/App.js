@@ -2,6 +2,7 @@ import React from "react";
 import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 import FilterLinkList from "./FilterLinkList";
+import logoURL from "../assets/logo.png";
 
 export default ({ todos, visibilityFilter, store }) => {
   const filterTodos = (todos, visibilityFilter) => {
@@ -19,7 +20,7 @@ export default ({ todos, visibilityFilter, store }) => {
   const todoList = filterTodos(todos, visibilityFilter);
   return (
     <div className="container">
-      <h1 className="text-center">TOODOO</h1>
+      <img src={logoURL} className="img-fluid" />
       <AddTodo
         onAddClick={text => {
           store.dispatch({
