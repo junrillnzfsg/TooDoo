@@ -2,44 +2,17 @@ import React from "react";
 import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 import FilterLinkList from "./FilterLinkList";
+import VisibleTodoList from "./VisibleTodoList";
 import logoURL from "../assets/logo.png";
 
-export default ({ todos, visibilityFilter, store }) => {
-  const filterTodos = (todos, visibilityFilter) => {
-    switch (visibilityFilter) {
-      case "SHOW_ALL":
-        return todos;
-      case "SHOW_COMPLETED":
-        return todos.filter(t => t.completed);
-      case "SHOW_ACTIVE":
-        return todos.filter(t => !t.completed);
-      default:
-        return todos;
-    }
-  };
-  const todoList = filterTodos(todos, visibilityFilter);
+export default ({ store }) => {
+  const { todos, visibilityFilter } = store.getState();
   return (
     <div className="container text-center">
-      <img src={logoURL} className="img-fluid" />
-      <AddTodo
-        onAddClick={text => {
-          store.dispatch({
-            type: "ADD_TODO",
-            id: todos.length,
-            text
-          });
-        }}
-      />
-      <FilterLinkList store={store} todos={todos} />
-      <TodoList
-        todos={todoList}
-        onTodoClick={id =>
-          store.dispatch({
-            type: "TOGGLE_TODO",
-            id
-          })
-        }
-      />
+      <img src={logoURL} className="img-fluid my-5" />
+      <AddTodo store={store} />
+      <FilterLinkList store={store} />
+      <VisibleTodoList store={store} />
     </div>
   );
 };

@@ -1,16 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
+import { createStore } from "redux";
 import App from "./components/App";
-import store from "./reducers/store";
+import todoApp from "./reducers/todoApp";
 
-let todoIndex = 0;
-
-const appRender = () => {
-  render(
-    <App {...store.getState()} store={store} />,
-    document.getElementById("root")
-  );
-};
-
-store.subscribe(appRender);
-appRender();
+render(<App store={createStore(todoApp)} />, document.getElementById("root"));

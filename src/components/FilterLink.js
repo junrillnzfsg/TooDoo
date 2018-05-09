@@ -2,13 +2,9 @@ import React, { Component } from "react";
 import Link from "./Link";
 
 export default class FilterLink extends Component {
-  constructor(props) {
-    super(props);
-    this.store = this.props.store;
-    this.state = this.store.getState();
-  }
   componentDidMount() {
-    this.unsubscribe = this.store.subscribe(() => {
+    const { store } = this.props;
+    this.unsubscribe = store.subscribe(() => {
       this.forceUpdate();
     });
   }
@@ -16,21 +12,23 @@ export default class FilterLink extends Component {
   componentWillUnmount() {
     this.unsubscribe();
   }
-  render() {
-    const props = this.props;
 
+  render() {
+    const { filter, children, store } = this.props;
+    const state = store.getState();
+    console.log(filter, state.visibilityFilter);
     return (
       <Link
-        active={props.filter === this.state.visibilityFilter}
+        active={filter === state.visibilityFilter}
         onClick={e => {
           e.preventDefault();
-          this.store.dispatch({
+          store.dispatch({
             type: "SET_VISIBILITY_FILTER",
-            filter: props.filter
+            filter
           });
         }}
       >
-        {props.children}
+        {children}
       </Link>
     );
   }

@@ -5,7 +5,7 @@ import {
 
 export default (state = VISIBILITY_STATE_ACTIONS.SHOW_ALL, action) => {
   switch (action.type) {
-    case VISIBILITY_FILTER_ACTIONS.SET_VIBILITY_FILTER:
+    case VISIBILITY_FILTER_ACTIONS.SET_VISIBILITY_FILTER:
       return action.filter;
     default:
       return state;
