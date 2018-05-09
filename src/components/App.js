@@ -3,8 +3,6 @@ import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 import FilterLinkList from "./FilterLinkList";
 
-let todoIndex = 0;
-
 export default ({ todos, visibilityFilter, store }) => {
   const filterTodos = (todos, visibilityFilter) => {
     switch (visibilityFilter) {
@@ -21,17 +19,17 @@ export default ({ todos, visibilityFilter, store }) => {
   const todoList = filterTodos(todos, visibilityFilter);
   return (
     <div className="container">
-      <h1>TODO APP</h1>
+      <h1 className="text-center">TOODOO</h1>
       <AddTodo
         onAddClick={text => {
           store.dispatch({
             type: "ADD_TODO",
-            id: todoIndex++,
+            id: todos.length,
             text
           });
         }}
       />
-      <FilterLinkList todos={todos} />
+      <FilterLinkList store={store} todos={todos} />
       <TodoList
         todos={todoList}
         onTodoClick={id =>

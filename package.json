@@ -1,7 +1,7 @@
 {
-  "name": "todo-app-redux",
+  "name": "toodoo",
   "version": "1.0.0",
-  "description": "",
+  "description": "yet another todo application",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {

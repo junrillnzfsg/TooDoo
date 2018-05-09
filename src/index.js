@@ -3,6 +3,8 @@ import { render } from "react-dom";
 import App from "./components/App";
 import store from "./reducers/store";
 
+let todoIndex = 0;
+
 const appRender = () => {
   render(
     <App {...store.getState()} store={store} />,
