@@ -19,7 +19,7 @@ export default ({ todos, visibilityFilter, store }) => {
   };
   const todoList = filterTodos(todos, visibilityFilter);
   return (
-    <div className="container">
+    <div className="container text-center">
       <img src={logoURL} className="img-fluid" />
       <AddTodo
         onAddClick={text => {
