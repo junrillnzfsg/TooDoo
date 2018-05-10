@@ -1,1 +1,1 @@
-More info once done
+![alt text](src/assets/logo.png)
