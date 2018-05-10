@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class AddTodo extends Component {
   componentDidMount() {
-    const { store } = this.props;
+    const { store } = this.context;
     this.unsubscribe = store.subscribe(() => {
       this.forceUpdate();
     });
@@ -13,7 +14,7 @@ export default class AddTodo extends Component {
   }
 
   render() {
-    const { store } = this.props;
+    const { store } = this.context;
     const state = store.getState();
     return (
       <div className="input-group">
@@ -45,3 +46,7 @@ export default class AddTodo extends Component {
     );
   }
 }
+
+AddTodo.contextTypes = {
+  store: PropTypes.object
+};
