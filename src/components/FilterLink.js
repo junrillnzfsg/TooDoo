@@ -16,7 +16,6 @@ export default class FilterLink extends Component {
   render() {
     const { filter, children, store } = this.props;
     const state = store.getState();
-    console.log(filter, state.visibilityFilter);
     return (
       <Link
         active={filter === state.visibilityFilter}
