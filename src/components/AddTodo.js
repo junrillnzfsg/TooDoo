@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { addTodo } from "../actions/actions";
 
-const AddTodo = (props, { store }) => {
+const AddTodo = ({ dispatch }) => {
   let input;
-  let todoxIndex = 0;
   return (
     <div className="input-group">
       <input
@@ -19,11 +20,7 @@ const AddTodo = (props, { store }) => {
           className="btn btn-info"
           type="button"
           onClick={() => {
-            store.dispatch({
-              type: "ADD_TODO",
-              id: todoxIndex++,
-              text: input.value
-            });
+            dispatch(addTodo(input.value));
             input.value = "";
           }}
         >
@@ -34,8 +31,4 @@ const AddTodo = (props, { store }) => {
   );
 };
 
-AddTodo.contextTypes = {
-  store: PropTypes.object
-};
-
-export default AddTodo;
+export default connect()(AddTodo);
