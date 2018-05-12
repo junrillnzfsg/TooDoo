@@ -1,22 +1,16 @@
-let todoxIndex = 0;
-export const addTodo = text => {
-  return {
-    type: "ADD_TODO",
-    id: todoxIndex++,
-    text
-  };
-};
+import { v4 } from "node-uuid";
+export const addTodo = text => ({
+  type: "ADD_TODO",
+  id: v4(),
+  text
+});
 
-export const setVisibilityFilter = filter => {
-  return {
-    type: "SET_VISIBILITY_FILTER",
-    filter
-  };
-};
+export const setVisibilityFilter = filter => ({
+  type: "SET_VISIBILITY_FILTER",
+  filter
+});
 
-export const toggleTodo = id => {
-  return {
-    type: "TOGGLE_TODO",
-    id
-  };
-};
+export const toggleTodo = id => ({
+  type: "TOGGLE_TODO",
+  id
+});

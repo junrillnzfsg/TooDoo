@@ -24,16 +24,14 @@ const filterTodos = (todos, visibilityFilter) => {
   }
 };
 
-const mapStateToProps = state => {
-  return {
-    todos: filterTodos(state.todos, state.visibilityFilter)
-  };
-};
+const mapStateToProps = state => ({
+  todos: filterTodos(state.todos, state.visibilityFilter)
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onTodoClick: id => dispatch(toggleTodo(id))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  onTodoClick(id) {
+    dispatch(toggleTodo(id));
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
